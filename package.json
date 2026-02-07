@@ -6,17 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
-    "convert": "node scripts/convert-word.js"
+    "lint": "eslint"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
-    "mammoth": "^1.8.0",
     "next": "15.5.12",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-markdown": "^10.1.0",
-    "turndown": "^7.2.0"
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
