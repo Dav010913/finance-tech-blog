@@ -58,5 +58,10 @@ Located in the project root. Double-click to run:
 - **Note**: Ensure the environment uses Node 18+ (Next.js 15 requirement).
 
 ## 5. Maintenance Guide
-- **Adding Content**: Add `.md` files to the appropriate language folder in `posts/`. Ensure frontmatter includes `title`, `date`, and `tags`.
 - **Modifying styles**: Edit `app/globals.css` for theme variables or use Tailwind utility classes directly in components.
+
+## 6. SEO Features
+- **Dynamic Metadata**: Title, Description, and Canonical URLs are auto-generated from Markdown frontmatter.
+- **Sitemap**: `sitemap.xml` is automatically generated in `out/` after build via `scripts/generate-sitemap.js`.
+- **Structured Data**: JSON-LD (`NewsArticle`) is injected into every article page for better Google indexing.
+- **Google Verification**: Placeholder added in `app/layout.tsx` metadata.

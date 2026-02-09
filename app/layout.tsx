@@ -15,9 +15,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "研究文章博客",
   description: "发布研究文章的博客",
+  // Google Search Console 验证码
+  verification: {
+    google: "nbu48i_MwgaVjs9YScEICXs9sInbU9Dy36T6twPHQQc",
+  },
 };
 
-import Link from "next/link";
 import LanguageSwitch from "./components/LanguageSwitch";
 import React from "react";
 

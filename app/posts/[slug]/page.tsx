@@ -19,9 +19,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) return { title: "文章未找到" };
+
+  const baseUrl = 'https://finance-tech-blog.netlify.app';
+
   return {
-    title: `${post.title} | 研究文章博客`,
+    title: `${post.title} | The Research Blog`,
     description: post.content.slice(0, 160).replace(/\n/g, " ").trim(),
+    alternates: {
+      canonical: `${baseUrl}/posts/${slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.content.slice(0, 160).replace(/\n/g, " ").trim(),
+      type: 'article',
+      publishedTime: post.date,
+      url: `${baseUrl}/posts/${slug}`,
+    },
   };
 }
 
@@ -33,8 +46,20 @@ export default async function PostPage({ params }: PageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: post.title,
+    datePublished: post.date,
+    description: post.content.slice(0, 160).replace(/\n/g, " ").trim(),
+  };
+
   return (
     <div className="min-h-screen bg-white text-slate-900 selection:bg-slate-200">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <article className="max-w-[65ch] mx-auto px-6 py-24">
         {/* 返回首页 - 极简 */}
         {/* 返回首页 - 极简 */}
@@ -106,7 +131,7 @@ export default async function PostPage({ params }: PageProps) {
         >
           <ReactMarkdown
             components={{
-              img: ({ node, ...props }) => {
+              img: ({ ...props }) => {
                 // Path Sanitization: Convert ../../public/ to /
                 const src = (typeof props.src === 'string' && props.src.startsWith("../../public/"))
                   ? props.src.replace("../../public/", "/")
@@ -115,6 +140,7 @@ export default async function PostPage({ params }: PageProps) {
                 // UI Component
                 return (
                   <figure className="my-10 flex flex-col items-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       {...props}
                       src={src}

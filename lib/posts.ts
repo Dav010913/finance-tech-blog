@@ -49,14 +49,14 @@ export async function getAllSlugs(): Promise<string[]> {
   let zhFiles: string[] = [];
   try {
     zhFiles = (await readdir(zhDir)).filter((f) => f.endsWith(".md"));
-  } catch (e) {
+  } catch {
     // dir might not exist or be empty
   }
 
   let enFiles: string[] = [];
   try {
     enFiles = (await readdir(enDir)).filter((f) => f.endsWith(".md"));
-  } catch (e) {
+  } catch {
     // dir might not exist
   }
 
@@ -93,7 +93,7 @@ export async function getAllPosts(): Promise<PostListItem[]> {
           });
         }
       }
-    } catch (e) {
+    } catch {
       // ignore
     }
   };
