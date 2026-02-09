@@ -33,18 +33,22 @@ export default function LanguageSwitch() {
     };
 
     return (
-        <div className="flex items-center space-x-2 text-xs font-mono text-slate-400">
+        <div className="flex items-center text-base font-mono">
             <button
                 onClick={() => switchLang("zh")}
-                className={`hover:text-slate-900 transition-colors ${currentLang === "zh" ? "text-slate-900 font-bold" : ""
+                className={`transition-colors duration-200 ${currentLang === "zh"
+                        ? "text-slate-900 font-medium"
+                        : "text-slate-400 hover:text-slate-900 font-normal"
                     }`}
             >
                 ZH
             </button>
-            <span className="text-slate-300">|</span>
+            <span className="text-slate-200 mx-3">|</span>
             <button
                 onClick={() => switchLang("en")}
-                className={`hover:text-slate-900 transition-colors ${currentLang === "en" ? "text-slate-900 font-bold" : ""
+                className={`transition-colors duration-200 ${currentLang === "en"
+                        ? "text-slate-900 font-medium"
+                        : "text-slate-400 hover:text-slate-900 font-normal"
                     }`}
             >
                 EN
