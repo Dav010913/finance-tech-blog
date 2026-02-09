@@ -94,8 +94,8 @@ export default async function PostPage({ params }: PageProps) {
             prose-td:py-3 prose-td:px-0 prose-td:border-b prose-td:border-slate-100 prose-td:text-slate-700
             prose-tr:border-b-0
             
-            /* Images */
-            prose-img:rounded-none prose-img:grayscale hover:prose-img:grayscale-0 prose-img:transition-all prose-img:my-10
+            /* Images - Handled by custom component, but setting defaults just in case */
+            prose-img:my-0 prose-img:p-0
             
             /* Lists */
             prose-ul:list-disc prose-ul:pl-4 prose-ul:my-6 prose-ul:marker:text-slate-300
@@ -103,7 +103,35 @@ export default async function PostPage({ params }: PageProps) {
             prose-li:pl-2
           "
         >
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+          <ReactMarkdown
+            components={{
+              img: ({ node, ...props }) => {
+                // Path Sanitization: Convert ../../public/ to /
+                const src = props.src?.startsWith("../../public/")
+                  ? props.src.replace("../../public/", "/")
+                  : props.src;
+
+                // UI Component
+                return (
+                  <figure className="my-10 flex flex-col items-center">
+                    <img
+                      {...props}
+                      src={src}
+                      className="mx-auto rounded-sm border border-slate-100 shadow-none block"
+                      alt={props.alt || ""}
+                    />
+                    {props.alt && (
+                      <figcaption className="mt-3 text-center text-xs text-slate-400 font-mono">
+                        {props.alt}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              },
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
         </div>
 
         {/* 底部声明 */}
