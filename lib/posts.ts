@@ -17,6 +17,7 @@ export interface PostListItem {
   title: string;
   date: string;
   slug: string;
+  tags: string[];
 }
 
 function formatDateToYYYYMMDD(date: unknown): string {
@@ -46,7 +47,7 @@ export async function getAllPosts(): Promise<PostListItem[]> {
     slugs.map(async (slug) => {
       const post = await getPost(slug);
       if (!post) return null;
-      return { title: post.title, date: post.date, slug: post.slug };
+      return { title: post.title, date: post.date, slug: post.slug, tags: post.tags };
     })
   );
   const valid = posts.filter((p): p is PostListItem => p !== null);
