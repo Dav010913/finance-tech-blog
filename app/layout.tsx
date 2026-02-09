@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   description: "发布研究文章的博客",
 };
 
+import Link from "next/link";
+import LanguageSwitch from "./components/LanguageSwitch";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,9 +28,28 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen relative`}
       >
-        {children}
+        {/* Global Navigation / Language Switch */}
+        <div className="absolute top-6 right-6 z-50">
+          <LanguageSwitch />
+        </div>
+
+        <main className="flex-grow">
+          {children}
+        </main>
+
+        {/* Minimalist Footer */}
+        <footer className="w-full max-w-[65ch] mx-auto px-6 py-8 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 font-mono gap-4">
+          <div>
+            &copy; 2026 Research & Insights
+          </div>
+          <div className="flex gap-4">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">Twitter</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">LinkedIn</a>
+            <a href="mailto:contact@example.com" className="hover:text-slate-900 transition-colors">Email</a>
+          </div>
+        </footer>
       </body>
     </html>
   );

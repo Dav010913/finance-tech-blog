@@ -37,11 +37,12 @@ export default async function PostPage({ params }: PageProps) {
     <div className="min-h-screen bg-white text-slate-900 selection:bg-slate-200">
       <article className="max-w-[65ch] mx-auto px-6 py-24">
         {/* 返回首页 - 极简 */}
+        {/* 返回首页 - 极简 */}
         <Link
-          href="/"
+          href={`/?lang=${post.lang}`}
           className="inline-block text-xs font-mono text-slate-400 hover:text-slate-900 mb-12 hover:underline underline-offset-4 decoration-1 transition-colors"
         >
-          ← Index
+          {post.lang === 'zh' ? '← 返回首页' : '← Index'}
         </Link>
 
         {/* 文章头部 */}
@@ -107,9 +108,9 @@ export default async function PostPage({ params }: PageProps) {
             components={{
               img: ({ node, ...props }) => {
                 // Path Sanitization: Convert ../../public/ to /
-                const src = props.src?.startsWith("../../public/")
+                const src = (typeof props.src === 'string' && props.src.startsWith("../../public/"))
                   ? props.src.replace("../../public/", "/")
-                  : props.src;
+                  : (props.src as string | undefined);
 
                 // UI Component
                 return (
