@@ -25,33 +25,29 @@ export default function LanguageSwitch() {
 
     const switchLang = (lang: "zh" | "en") => {
         const queryString = createQueryString("lang", lang);
-        // If we are on home, simple push. If on article, stay on article (content won't change unless it is translated, but UI might).
-        // Since content is not truly mirrored, staying on the same slug is fine (it will load the content if available, but slugs are unique... actually wait).
-        // If slugs are unique, switching language on an article page might be tricky if versions have different slugs.
-        // But for now, we just update the UI preference.
         router.push(pathname + (queryString ? "?" + queryString : ""));
     };
 
     return (
-        <div className="flex items-center text-base font-mono">
-            <button
-                onClick={() => switchLang("zh")}
-                className={`transition-colors duration-200 ${currentLang === "zh"
-                        ? "text-slate-900 font-medium"
-                        : "text-slate-400 hover:text-slate-900 font-normal"
-                    }`}
-            >
-                ZH
-            </button>
-            <span className="text-slate-200 mx-3">|</span>
+        <div className="flex items-center text-lg font-mono">
             <button
                 onClick={() => switchLang("en")}
-                className={`transition-colors duration-200 ${currentLang === "en"
-                        ? "text-slate-900 font-medium"
+                className={`transition-colors duration-300 ${currentLang === "en"
+                        ? "text-slate-900 font-semibold"
                         : "text-slate-400 hover:text-slate-900 font-normal"
                     }`}
             >
                 EN
+            </button>
+            <span className="text-slate-200 mx-3">|</span>
+            <button
+                onClick={() => switchLang("zh")}
+                className={`transition-colors duration-300 ${currentLang === "zh"
+                        ? "text-slate-900 font-semibold"
+                        : "text-slate-400 hover:text-slate-900 font-normal"
+                    }`}
+            >
+                ZH
             </button>
         </div>
     );

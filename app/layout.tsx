@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
+import Footer from "./components/Footer";
 import LanguageSwitch from "./components/LanguageSwitch";
 import React from "react";
 
@@ -45,17 +46,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        {/* Minimalist Footer */}
-        <footer className="w-full max-w-[65ch] mx-auto px-6 py-8 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 font-mono gap-4">
-          <div>
-            &copy; 2026 Research & Insights
-          </div>
-          <div className="flex gap-4">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">Twitter</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">LinkedIn</a>
-            <a href="mailto:contact@example.com" className="hover:text-slate-900 transition-colors">Email</a>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
