@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 
 import Link from "next/link";
 import LanguageSwitch from "./components/LanguageSwitch";
+import React from "react";
 
 export default function RootLayout({
   children,
@@ -32,7 +33,9 @@ export default function RootLayout({
       >
         {/* Global Navigation / Language Switch */}
         <div className="absolute top-6 right-6 z-50">
-          <LanguageSwitch />
+          <React.Suspense fallback={null}>
+            <LanguageSwitch />
+          </React.Suspense>
         </div>
 
         <main className="flex-grow">
