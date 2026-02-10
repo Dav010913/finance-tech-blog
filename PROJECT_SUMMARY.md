@@ -85,7 +85,7 @@ Located in the project root. Double-click to run:
 - **Official Contact**: `alpha.research.lab.2026@gmail.com`
 
 ### DevOps & SEO
-- **Deployment**: `publish.bat` handles one-click Git commit & push. Netlify auto-deploys from `main`.
+- **Deployment**: `publish.bat` handles one-click Git commit & push. Vercel auto-deploys from `main`.
 - **SEO**:
   - Google Search Console verification configured.
   - `sitemap.xml` auto-generated post-build.

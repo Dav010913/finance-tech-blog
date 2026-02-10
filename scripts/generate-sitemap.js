@@ -3,7 +3,7 @@ const path = require('path');
 
 const BASE_URL = 'https://finance-tech-blog.netlify.app';
 const POSTS_DIR = path.join(__dirname, '..', 'posts');
-const OUT_DIR = path.join(__dirname, '..', 'out');
+const OUT_DIR = path.join(__dirname, '..', 'public');
 
 function getSlugs() {
     const slugs = new Set();
