@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'https://finance-tech-blog.netlify.app';
+const BASE_URL = 'https://[your-vercel-domain].vercel.app'; // Update this after deployment
 const POSTS_DIR = path.join(__dirname, '..', 'posts');
 const OUT_DIR = path.join(__dirname, '..', 'public');
 

@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 A high-performance, minimalist blog built with **Next.js 15 (App Router)** and **Tailwind CSS v4**.
-- **Mode**: Static Export (`output: export`).
+- **Mode**: Hybrid (SSG + SSR). Optimized for Vercel.
 - **Target**: Financial/Tech research articles.
 - **Languages**: Bilingual (Chinese & English).
 
@@ -15,7 +15,7 @@ The project uses a split-folder strategy for content management.
 - `lib/posts.ts`: Scanning logic that reads both directories and adds a `lang` field (`zh` or `en`) to each post object.
 
 ### Routing & Filtering
-To support static export while allowing dynamic filtering:
+To ensure optimal performance on Vercel:
 - **`app/page.tsx`**: A **Server Component** that fetches *all* posts build-time.
 - **`app/components/PostList.tsx`**: A **Client Component** that receives all posts and filters them based on the browser's URL query parameter (`?lang=en` or default `zh`).
 - **Suspense**: All Client Components using `useSearchParams` (`PostList`, `LanguageSwitch`) are wrapped in `<Suspense>` boundaries to ensure build optimization.
@@ -52,10 +52,11 @@ Located in the project root. Double-click to run:
 2. `git commit -m "Site Update: <current date/time>"`
 3. `git push`
 
-### Netlify Configuration
+### Vercel Configuration
 - **Build Command**: `npm run build`
-- **Publish Directory**: `out`
-- **Note**: Ensure the environment uses Node 18+ (Next.js 15 requirement).
+- **Output Directory**: Default (automatically managed by Vercel)
+- **Domain**: [Pending Deployment]
+- **Note**: Ensure the project is linked to the GitHub repository for automatic CD.
 
 ## 5. Maintenance Guide
 - **Modifying styles**: Edit `app/globals.css` for theme variables or use Tailwind utility classes directly in components.
