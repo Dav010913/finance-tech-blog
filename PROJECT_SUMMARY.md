@@ -65,3 +65,36 @@ Located in the project root. Double-click to run:
 - **Sitemap**: `sitemap.xml` is automatically generated in `out/` after build via `scripts/generate-sitemap.js`.
 - **Structured Data**: JSON-LD (`NewsArticle`) is injected into every article page for better Google indexing.
 - **Google Verification**: Placeholder added in `app/layout.tsx` metadata.
+
+## 7. Technical Specifications (Final)
+### UI / UX Standards
+- **Global Style**: Strict Minimalist Financial.
+  - **Language**: Bilingual (EN | ZH).
+  - **Language Switcher**: Top-right corner, enlarged size with hover effect (`hover:text-slate-900`, `scale/font-weight` transition).
+- **Footer Specifications**:
+  - **Layout**: 3-Row Vertical, Left-Aligned.
+    - **Row 1**: Disclaimer (Bilingual, `whitespace-nowrap`).
+    - **Row 2**: Copyright + Social Links (Flex row, `space-x-8`).
+    - **Row 3**: Contact Email (Pure text).
+  - **Color**: `text-slate-500` for higher contrast on white.
+  - **Typography**: `text-xs` (12px), `leading-relaxed`.
+
+### Branding & Social
+- **Twitter / X**: [@AlphaResLab](https://x.com/AlphaResLab)
+- **LinkedIn**: [alpha-research-lab](https://www.linkedin.com/in/alpha-research-lab/)
+- **Official Contact**: `alpha.research.lab.2026@gmail.com`
+
+### DevOps & SEO
+- **Deployment**: `publish.bat` handles one-click Git commit & push. Netlify auto-deploys from `main`.
+- **SEO**:
+  - Google Search Console verification configured.
+  - `sitemap.xml` auto-generated post-build.
+  - JSON-LD structured data for rich results.
+
+## 8. Stable Release Status
+> **Project Status**: COMPLETED
+> **Release Date**: 2026-02-10
+> **Version**: Stable Release (v1.0.0)
+
+This project has completed the full technical loop including frontend development, content management logic, SEO optimization, and automated deployment workflow.
+
