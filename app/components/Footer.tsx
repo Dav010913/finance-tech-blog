@@ -13,9 +13,9 @@ function FooterContent() {
             : "免责声明：内容仅供研究参考，不构成投资建议。";
 
     return (
-        <footer className="w-full max-w-[65ch] mx-auto px-6 py-12 border-t border-slate-100 flex flex-col items-start space-y-2 text-[11px] text-slate-400 font-mono">
+        <footer className="w-full max-w-[65ch] mx-auto px-6 py-12 border-t border-slate-100 flex flex-col items-start space-y-4 text-xs text-slate-400 font-mono leading-relaxed">
             {/* Row 1: Disclaimer */}
-            <div className="text-left leading-relaxed">
+            <div className="text-left">
                 {disclaimer}
             </div>
 
