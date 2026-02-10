@@ -92,10 +92,13 @@ export default async function PostPage({ params }: PageProps) {
 
         {/* 正文内容 - 极致排版 */}
         <div
-          className="prose prose-slate max-w-none
+          className={`prose prose-slate max-w-none ${post.lang === 'en'
+              ? '[&>p:first-of-type::first-letter]:text-3xl [&>p:first-of-type::first-letter]:font-serif [&>p:first-of-type::first-letter]:mr-1 [&>p:first-of-type::first-letter]:float-left [&>p:first-of-type::first-letter]:leading-none [&>p:first-of-type::first-letter]:mt-1'
+              : ''
+            }
             
             /* Typography */
-            prose-p:font-sans prose-p:text-base prose-p:leading-7 prose-p:text-slate-800 prose-p:mb-6
+            prose-p:font-sans prose-p:text-base prose-p:leading-relaxed prose-p:text-slate-800 prose-p:mb-6
             prose-headings:font-serif prose-headings:font-medium prose-headings:text-slate-900 prose-headings:mt-10 prose-headings:mb-6
             prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
             
@@ -107,7 +110,7 @@ export default async function PostPage({ params }: PageProps) {
             prose-em:text-slate-800 prose-em:italic
             
             /* Blockquotes - Custom Style */
-            prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-slate-600 prose-blockquote:border-l-2 prose-blockquote:border-slate-900 prose-blockquote:pl-6 prose-blockquote:my-8 prose-blockquote:bg-transparent
+            prose-blockquote:not-italic prose-blockquote:font-serif prose-blockquote:text-slate-600 prose-blockquote:border-l-4 prose-blockquote:border-blue-900 prose-blockquote:pl-6 prose-blockquote:my-8 prose-blockquote:bg-transparent
             
             /* Code */
             prose-code:font-mono prose-code:text-sm prose-code:text-slate-700 prose-code:bg-slate-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
@@ -127,7 +130,7 @@ export default async function PostPage({ params }: PageProps) {
             prose-ul:list-disc prose-ul:pl-4 prose-ul:my-6 prose-ul:marker:text-slate-300
             prose-ol:list-decimal prose-ol:pl-4 prose-ol:my-6 prose-ol:marker:text-slate-400
             prose-li:pl-2
-          "
+          `}
         >
           <ReactMarkdown
             components={{
